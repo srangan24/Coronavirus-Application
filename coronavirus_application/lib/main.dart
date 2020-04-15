@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
+//import 'package:geolocator/geolocator.dart';
+import 'package:geolocation/geolocation.dart';
+import 'dart:async';
 
 void main() {
   runApp(MyApp());
@@ -51,17 +53,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Position currentPosition;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-    });
-  }
+  StreamSubscription subscription;
+  bool locationUpdatesOn = false;
+  Location _currentPosition;
+  int _counter = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -78,33 +73,69 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("${currentPosition == null ? 'Press the button to locate your address!' : currentPosition}"),
-            RaisedButton(
-              color: Colors.blue,
-              textColor: Colors.white,
-              padding: EdgeInsets.all(16.0),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
-              child: Text("Locate!"),
-              onPressed: () => getCurrentLocation(),
-            )
-          ],
-        )
-
-      ),
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Text("Number of updates: ${_counter}"),
+          Text(
+              "${_currentPosition == null ? 'Press the button to locate your address!' : _currentPosition}"),
+          RaisedButton(
+            color: Colors.blue,
+            textColor: Colors.white,
+            padding: EdgeInsets.all(16.0),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8.0)),
+            child: Text("Locate!"),
+            onPressed: () => _getCurrentLocation(),
+          ),
+          RaisedButton(
+            color: Colors.blue,
+            textColor: Colors.white,
+            padding: EdgeInsets.all(16.0),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8.0)),
+            child: Text(
+                "${locationUpdatesOn ? 'Turn off updates' : 'turn on updates'}"),
+            onPressed: () => locationUpdatesOn ? _turnOffUpdates() : _getLocationUpdates(),
+          )
+        ],
+      )),
     );
   }
 
-  getCurrentLocation(){
-    final Geolocator geolocator = Geolocator()..forceAndroidLocationManager;
-    geolocator
-      .getCurrentPosition(desiredAccuracy: LocationAccuracy.best)
-      .then((Position position){
-        setState((){
-          currentPosition = position;
+  _getCurrentLocation() {
+     subscription =
+        Geolocation.currentLocation(accuracy: LocationAccuracy.best)
+            .listen((result) {
+      if (result.isSuccessful) {
+        setState(() {
+          _currentPosition = result.location;
         });
-      });
+        // todo with result
+      }
+    });
+  }
+
+  _getLocationUpdates() {
+    print('turning on updates!');
+    subscription =
+        Geolocation.locationUpdates(
+      accuracy: LocationAccuracy.best,
+      displacementFilter: 2.0, // in meters
+      inBackground:
+          true, // by default, location updates will pause when app is inactive (in background). Set to `true` to continue updates in background.
+    ).listen((result) {
+      if (result.isSuccessful) {
+        _currentPosition = result.location;
+        setState(() {
+          _currentPosition = result.location;
+          _counter++;
+        });
+      }
+    });
+  }
+
+  _turnOffUpdates(){
+    subscription.cancel();
   }
 }
