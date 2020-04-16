@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
-//import 'package:geolocator/geolocator.dart';
-import 'package:geolocation/geolocation.dart';
+import 'package:geolocator/geolocator.dart';
+//import 'package:geolocation/geolocation.dart';
+import 'package:workmanager/workmanager.dart';
 import 'dart:async';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  Workmanager.initialize(
+    callbackDispatcher,
+    isInDebugMode: true,
+    );
+  print('intialized WorkManager');
   runApp(MyApp());
 }
 
@@ -34,6 +41,21 @@ class MyApp extends StatelessWidget {
   }
 }
 
+const String updateLocation = 'updateLocation';
+
+void callbackDispatcher(){
+  Workmanager.executeTask((task, inputdata) async{
+    switch(task){
+      case updateLocation:
+        print("updating location");
+        Position position = await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+        print(position);
+        break;
+    }
+    return Future.value(true);
+  });
+}
+
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
 
@@ -53,9 +75,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  StreamSubscription subscription;
   bool locationUpdatesOn = false;
-  Location _currentPosition;
+  Position _currentPosition;
   int _counter = 0;
 
   @override
@@ -88,54 +109,38 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Text("Locate!"),
             onPressed: () => _getCurrentLocation(),
           ),
-          RaisedButton(
+           RaisedButton(
             color: Colors.blue,
             textColor: Colors.white,
             padding: EdgeInsets.all(16.0),
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8.0)),
-            child: Text(
-                "${locationUpdatesOn ? 'Turn off updates' : 'turn on updates'}"),
-            onPressed: () => locationUpdatesOn ? _turnOffUpdates() : _getLocationUpdates(),
-          )
+            child: Text("Cancel All!"),
+            onPressed: () async {
+                  await Workmanager.cancelAll();},
+           )
         ],
       )),
     );
   }
 
   _getCurrentLocation() {
-     subscription =
-        Geolocation.currentLocation(accuracy: LocationAccuracy.best)
-            .listen((result) {
-      if (result.isSuccessful) {
-        setState(() {
-          _currentPosition = result.location;
-        });
-        // todo with result
-      }
-    });
+    Workmanager.registerPeriodicTask(
+    "1",
+    updateLocation, //This is the value that will be returned in the callbackDispatcher
+    initialDelay: Duration(seconds: 2),
+  );
   }
 
-  _getLocationUpdates() {
-    print('turning on updates!');
-    subscription =
-        Geolocation.locationUpdates(
-      accuracy: LocationAccuracy.best,
-      displacementFilter: 2.0, // in meters
-      inBackground:
-          true, // by default, location updates will pause when app is inactive (in background). Set to `true` to continue updates in background.
-    ).listen((result) {
-      if (result.isSuccessful) {
-        _currentPosition = result.location;
-        setState(() {
-          _currentPosition = result.location;
-          _counter++;
-        });
-      }
-    });
-  }
-
-  _turnOffUpdates(){
-    subscription.cancel();
-  }
+  // _getCurrentLocation() async {
+  //   print('getting current location');
+    // Geolocator()
+    //     .getCurrentPosition(desiredAccuracy: LocationAccuracy.high)
+    //     .then((position) {
+    //   setState(() {
+    //     _currentPosition = position;
+    //   });
+    // });
+  //   print(_currentPosition);
+  // }
 }
