@@ -184,6 +184,54 @@ class _MyHomePageState extends State<MyHomePage> {
                           Align(
                             alignment: Alignment(0, -0.75),
                             child: Container(
+                              child: Stack(
+                                children: <Widget>[
+                                  Container(
+                                    width: MediaQuery.of(context).size.width/5,
+                                    height: MediaQuery.of(context).size.height/20,
+                                    margin: new EdgeInsets.symmetric(
+                                      horizontal: 10,
+                                      vertical: 10,
+                                    ),
+                                    alignment: Alignment(0, 0),
+                                    child: Text(
+                                      "TIPS",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Color(0xFFFFFFFF),
+                                        fontSize: 12),
+                                    ),
+                                    decoration: BoxDecoration(
+                                      color: Color(0xFF6158FF),
+                                      borderRadius: new BorderRadius.all(
+                                        const Radius.circular(63.0)
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    width: MediaQuery.of(context).size.width/5,
+                                    height: MediaQuery.of(context).size.height/20,
+                                    margin: new EdgeInsets.symmetric(
+                                      horizontal: 10,
+                                      vertical: 10,
+                                    ),
+                                    alignment: Alignment(6, 0),
+                                    child: Text(
+                                      "DETAILS",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Color(0xFF6158FF),
+                                        fontSize: 12),
+                                    ),
+                                    /*decoration: BoxDecoration(
+                                      color: Color(0xFF6158FF),
+                                      borderRadius: new BorderRadius.all(
+                                        const Radius.circular(63.0)
+                                      ),
+                                    ),   ADD WHEN THE DETAILS IS CLICKED*/ 
+                                  )
+                                ],
+                              ),
                               width: MediaQuery.of(context).size.width / 2,
                               height: MediaQuery.of(context).size.height / 15,
                               decoration: BoxDecoration(
@@ -203,6 +251,27 @@ class _MyHomePageState extends State<MyHomePage> {
                                       bottomRight: const Radius.circular(63.0),
                                       topRight: const Radius.circular(63.0),
                                       topLeft: const Radius.circular(63.0))),
+                            ),
+                          ),
+                          Card(
+                            margin: new EdgeInsets.fromLTRB(20, 110, 20, 50),
+                            child: Stack(
+                              children: <Widget>[
+                                Container(
+                                  width: 160,
+                                  child: Text(
+                                    "How to Maintain a Healthy Lifestyle While Social Distancing",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Color(0xFF3BAC88),
+                                        fontSize: 17),
+                                  ),
+                                ),
+                                Positioned(
+                                  width: MediaQuery.of(context).size.width/3,
+                                  child: Image.asset('assets/cool.png')
+                                )
+                              ],
                             ),
                           )
                         ],
