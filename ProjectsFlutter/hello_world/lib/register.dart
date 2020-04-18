@@ -66,7 +66,7 @@ class _Register extends State<Register> {
                             alignment: Alignment(0, -0.75),
                             child: Image.asset(
                               "assets/doctor.png",
-                              width: MediaQuery.of(context).size.width * .55,
+                              height: MediaQuery.of(context).size.height * .3,
                             )),
                         Align(
                             alignment: Alignment(0, 0.25),

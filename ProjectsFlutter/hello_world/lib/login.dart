@@ -66,7 +66,7 @@ class _Login extends State<Login> {
                             alignment: Alignment(0, -0.75),
                             child: Image.asset(
                               "assets/doctor3.png",
-                              width: MediaQuery.of(context).size.width * .4,
+                              height: MediaQuery.of(context).size.height * .3,
                             )),
                         Align(
                             alignment: Alignment(0, 0.25),
