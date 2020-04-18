@@ -63,7 +63,7 @@ class LoginCard extends StatelessWidget {
                       text:'Register',
                       style: 
                         TextStyle(
-                          color: Color(0xFF3F0052)),
+                          color: Color(0xFF7F0887)),
                     ),
                   ],
                 ),
