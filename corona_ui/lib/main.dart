@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
 class LoginCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    double cardHeight = MediaQuery.of(context).size.height*2.8/4;
+    double cardHeight = MediaQuery.of(context).size.height*3.1/4;
     double cardWidth = MediaQuery.of(context).size.width/10;
     return Card(
       shape: ContinuousRectangleBorder(
@@ -40,12 +40,34 @@ class LoginCard extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                   color: Color(0xFF0076BA),
+                  highlightColor: Color(0xFF3F0052),
                   elevation: 5,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30.0),
                     ),
                   onPressed: () {},
                 ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(25.0),
+              child: RichText(
+                text: TextSpan(
+                  style: GoogleFonts.nunito(
+                    textStyle: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  children: <TextSpan>[
+                    TextSpan(
+                      text:'Do not have an account? '
+                      ),
+                    TextSpan(
+                      text:'Register',
+                      style: 
+                        TextStyle(
+                          color: Color(0xFF3F0052)),
+                    ),
+                  ],
+                ),
+              ),
             ),
         ]
       )
@@ -84,23 +106,3 @@ class IntroPage extends StatelessWidget {
     );
   }
 }
-        
-        
-        
-        
-
-
-/* child: FlatButton(
-                        shape: new RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(18.0),
-                        side: BorderSide(color: Colors.red)),
-                        color: Colors.white,
-                        textColor: Colors.red,
-                        padding: EdgeInsets.all(8.0),
-                        onPressed: () {},
-                        child: Text("Add to Cart".toUpperCase(),
-                          style: TextStyle(
-                          fontSize: 14.0,
-                          ),
-                        ),
-                      ),*/
