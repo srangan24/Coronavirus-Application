@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 //import 'nocorona.dart';
 //import 'positive.dart';
 //import 'maybe.dart';
-import 'register.dart';
+//import 'register.dart';
+import 'login.dart';
 
 void main() => runApp(MyApp());
 bool isChecked = false;
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      home: Register(),
+      home: Login(),
     );
   }
 }
