@@ -24,7 +24,7 @@ class LoginCard extends StatelessWidget {
         borderRadius: BorderRadius.only(topRight: Radius.circular(100), topLeft: Radius.circular(100)),
       ),
       color: Colors.white,
-      margin: EdgeInsets.fromLTRB(cardWidth, cardHeight, cardWidth, 0),
+      margin: EdgeInsets.only(top: cardHeight, bottom: 0),
       child: Center(
       child: Column(
         children: <Widget>[
