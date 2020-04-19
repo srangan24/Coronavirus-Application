@@ -79,7 +79,7 @@ class _Positive extends State<Positive>{
                       ),
                       Positioned(
                           bottom: 50,
-                          left: 25,
+                          left: 30,
                           child: Stack(
                             children: <Widget>[
                               Column(
@@ -89,14 +89,14 @@ class _Positive extends State<Positive>{
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         color: Color(0xFFFFFFFF),
-                                        fontSize: 30),
+                                        fontSize: 28),
                                   ),
                                   Text(
                                     '\nNotifying people who you\’ve \nhad contact with in the last two \nweeks anonymously.',
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         color: Color(0xFFFFFFFF),
-                                        fontSize: 16),
+                                        fontSize: 15),
                                   )
                                 ],
                               )
@@ -127,7 +127,7 @@ class _Positive extends State<Positive>{
                     ),
                   ),
                   Positioned(
-                    top: -175,
+                    top: -1*MediaQuery.of(context).size.height/5,
                     right: 20,
                     height: MediaQuery.of(context).size.height / 2.5,
                     child: Image.asset('assets/doctor2.png'),
@@ -180,7 +180,7 @@ class _Positive extends State<Positive>{
                                       horizontal: 10,
                                       vertical: 10,
                                     ),
-                                    alignment: Alignment(6, 0),
+                                    alignment: Alignment(6.5, 0),
                                     child: Text(
                                       "DETAILS",
                                       style: TextStyle(
@@ -220,7 +220,7 @@ class _Positive extends State<Positive>{
                           ),
                           Card(
                             elevation: 0,
-                            margin: new EdgeInsets.fromLTRB(20, 110, 20, 50),
+                            margin: new EdgeInsets.fromLTRB(20, 100, 20, 50),
                             child: Stack(
                               children: <Widget>[
                                 Container(
@@ -228,7 +228,6 @@ class _Positive extends State<Positive>{
                                 ),
                                 Positioned(
                                   left: 10,
-                                  top: 10,
                                   child: Container(
                                     alignment: Alignment(0.5, -0.75),
                                     width: 160,
@@ -251,7 +250,7 @@ class _Positive extends State<Positive>{
                                     ),
                                 Positioned(
                                   left: 10,
-                                  bottom: 10,
+                                  bottom: 0,
                                   child: Container(
                                     alignment: Alignment(0.5, 0),
                                     width: MediaQuery.of(context).size.width*0.6,
@@ -272,7 +271,7 @@ class _Positive extends State<Positive>{
                       )),
                   Positioned(
                     width: MediaQuery.of(context).size.width,
-                    bottom: MediaQuery.of(context).size.height / 18,
+                    bottom: MediaQuery.of(context).size.height / 25,
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[

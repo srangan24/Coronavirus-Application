@@ -73,7 +73,7 @@ class _NoCorona extends State<NoCorona> {
                         ],
                       ),
                       Positioned(
-                          bottom: 50,
+                          bottom: 40,
                           left: 25,
                           child: Stack(
                             children: <Widget>[
@@ -84,14 +84,14 @@ class _NoCorona extends State<NoCorona> {
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         color: Color(0xFFCDFFF3),
-                                        fontSize: 30),
+                                        fontSize: 28),
                                   ),
                                   Text(
                                     '\nYou have not been close or \ncrossed paths with anyone\nwith a confirmed Covid-19 \ncase.',
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         color: Color(0xFFCDFFF3),
-                                        fontSize: 16),
+                                        fontSize: 13),
                                   )
                                 ],
                               )
@@ -175,7 +175,7 @@ class _NoCorona extends State<NoCorona> {
                                       horizontal: 10,
                                       vertical: 10,
                                     ),
-                                    alignment: Alignment(6, 0),
+                                    alignment: Alignment(6.5, 0),
                                     child: Text(
                                       "DETAILS",
                                       style: TextStyle(
@@ -215,7 +215,7 @@ class _NoCorona extends State<NoCorona> {
                           ),
                           Card(
                             elevation: 0,
-                            margin: new EdgeInsets.fromLTRB(20, 110, 20, 50),
+                            margin: new EdgeInsets.fromLTRB(20, 100, 20, 50),
                             child: Stack(
                               children: <Widget>[
                                 Container(
@@ -223,7 +223,7 @@ class _NoCorona extends State<NoCorona> {
                                 ),
                                 Positioned(
                                   left: 10,
-                                  top: 10,
+                                  top: 0,
                                   child: Container(
                                     alignment: Alignment(0.5, -0.75),
                                     width: 160,
@@ -246,7 +246,7 @@ class _NoCorona extends State<NoCorona> {
                                     ),
                                 Positioned(
                                   left: 10,
-                                  bottom: 10,
+                                  bottom: 0,
                                   child: Container(
                                     alignment: Alignment(0.5, 0),
                                     width: MediaQuery.of(context).size.width*0.6,
@@ -267,7 +267,7 @@ class _NoCorona extends State<NoCorona> {
                       )),
                   Positioned(
                     width: MediaQuery.of(context).size.width,
-                    bottom: MediaQuery.of(context).size.height / 15,
+                    bottom: MediaQuery.of(context).size.height / 20,
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
