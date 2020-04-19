@@ -78,7 +78,7 @@ class _Positive extends State<Positive>{
                         ],
                       ),
                       Positioned(
-                          bottom: 50,
+                          bottom: MediaQuery.of(context).size.height/12,
                           left: 30,
                           child: Stack(
                             children: <Widget>[
@@ -220,7 +220,7 @@ class _Positive extends State<Positive>{
                           ),
                           Card(
                             elevation: 0,
-                            margin: new EdgeInsets.fromLTRB(20, 100, 20, 50),
+                            margin: new EdgeInsets.fromLTRB(20, MediaQuery.of(context).size.height/6.5, 20, 50),
                             child: Stack(
                               children: <Widget>[
                                 Container(

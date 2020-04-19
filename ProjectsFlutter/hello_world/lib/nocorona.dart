@@ -73,7 +73,7 @@ class _NoCorona extends State<NoCorona> {
                         ],
                       ),
                       Positioned(
-                          bottom: 40,
+                          bottom: MediaQuery.of(context).size.height/12,
                           left: 25,
                           child: Stack(
                             children: <Widget>[
@@ -215,7 +215,7 @@ class _NoCorona extends State<NoCorona> {
                           ),
                           Card(
                             elevation: 0,
-                            margin: new EdgeInsets.fromLTRB(20, 100, 20, 50),
+                            margin: new EdgeInsets.fromLTRB(20, MediaQuery.of(context).size.height/6.5, 20, 50),
                             child: Stack(
                               children: <Widget>[
                                 Container(

@@ -1,0 +1,22 @@
+PODS:
+  - custom_switch_button (0.0.1):
+    - Flutter
+  - Flutter (1.0.0)
+
+DEPENDENCIES:
+  - custom_switch_button (from `.symlinks/plugins/custom_switch_button/ios`)
+  - Flutter (from `Flutter`)
+
+EXTERNAL SOURCES:
+  custom_switch_button:
+    :path: ".symlinks/plugins/custom_switch_button/ios"
+  Flutter:
+    :path: Flutter
+
+SPEC CHECKSUMS:
+  custom_switch_button: c7f72277ca24c7723430e968379fba20dbf57e04
+  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+
+PODFILE CHECKSUM: 1b66dae606f75376c5f2135a8290850eeb09ae83
+
+COCOAPODS: 1.9.1
