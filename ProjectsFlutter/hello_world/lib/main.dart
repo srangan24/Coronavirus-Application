@@ -4,6 +4,7 @@ import 'positive.dart';
 import 'maybe.dart';
 import 'register.dart';
 import 'login.dart';
+import 'splash.dart';
 
 void main() => runApp(MyApp());
 bool isChecked = false;
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      home: Positive(),
+      home: Splash(),
     );
   }
 }

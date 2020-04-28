@@ -51,6 +51,8 @@ flutter:
     - assets/yuhh.png
     - assets/logo.png
     - assets/cool.png
+    - assets/newlogo.png
+    - assets/apptitle.png
     
   # assets:
   #  - images/a_dot_burr.jpeg
