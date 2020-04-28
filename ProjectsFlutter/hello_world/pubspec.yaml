@@ -20,6 +20,7 @@ dependencies:
   flutter:
     sdk: flutter
   custom_switch_button: ^0.5.0
+  google_maps_flutter: ^0.5.11
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -53,6 +54,7 @@ flutter:
     - assets/cool.png
     - assets/newlogo.png
     - assets/apptitle.png
+    - assets/graph.png
     
   # assets:
   #  - images/a_dot_burr.jpeg
